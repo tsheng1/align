@@ -2,7 +2,7 @@
 
 ## Background and Overview
 
-Radian is a visualization of some of the most popular sorting algorithms. Much of the focus of this project is to not only showcase the algorithms but also to highlight the aesthetics and appeal of data in a 2D space.
+Radian is a visualization of some of the most popular sorting algorithms. Much of the focus of this project is to not only showcase the functionality of the algorithms but also to highlight the aesthetics and appeal of data in a 2D space.
 
 ## Functionality and MVP Features
 
@@ -15,7 +15,7 @@ In Radian, users will be able to:
 
 ## Wireframe
 
-![alt text](https://github.com/tsheng1/castle/blob/master/wireframe.png)
+![](https://github.com/tsheng1/radian/blob/master/wireframe.png)
 
 ## Architecture and Technologies
 
@@ -41,3 +41,7 @@ This project was created with the following:
 ### Day 4
 
 * Finish touchup and styling, along with finalizing the rest of the project.
+
+### Bonus
+
+* Additional shapes, not just a circle.
