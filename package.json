@@ -1,0 +1,52 @@
+{
+  "name": "radian",
+  "version": "1.0.0",
+  "description": "js project",
+  "main": "index.js",
+  "dependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/polyfill": "^7.6.0",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/runtime": "^7.6.3",
+    "autoprefixer": "^9.6.5",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "d3": "^5.12.0",
+    "fibers": "^4.0.1",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-sass": "^4.12.0",
+    "postcss-loader": "^3.0.0",
+    "sass": "^1.23.0",
+    "sass-loader": "^8.0.0",
+    "save": "^2.4.0",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.2",
+    "webpack-merge": "^4.2.2"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.6.2"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --config webpack.dev.js",
+    "webpack:watch": "webpack --watch --config webpack.dev.js",
+    "webpack:build": "webpack --config webpack.prod.js  --optimize-minimize"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tsheng1/radian.git"
+  },
+  "author": "Tony Sheng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tsheng1/radian/issues"
+  },
+  "homepage": "https://github.com/tsheng1/radian#readme",
+  "browserslist": [
+    "last 1 version",
+    "> 1%",
+    "maintained node versions",
+    "not dead"
+  ]
+}

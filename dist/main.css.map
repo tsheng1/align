@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/styles/index.scss"],"names":[],"mappings":"AAAA,WAAW,qBAAqB,2BAA2B,iBAAiB,YAAY,WAAW","file":"main.css","sourcesContent":[".chart div{font:10px sans-serif;background-color:steelblue;text-align:right;padding:3px;margin:1px;color:white}\n"],"sourceRoot":""}
