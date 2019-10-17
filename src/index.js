@@ -1,9 +1,10 @@
 import './styles/index.scss';
-import {createMap, render} from './create_map';
 import {updateMap} from './update';
 import bubbleSort from './sort/bubblesort';
 import "@babel/polyfill";
 import renderSwaps from './sort/quicksort';
+import Map from './create_map';
+import QuickSortClass from './sort/quicksort';
 
 window.addEventListener('DOMContentLoaded', () => {
 
@@ -18,10 +19,7 @@ window.addEventListener('DOMContentLoaded', () => {
   //   quickSort(circlesArr, circlesArr, circleCreateArr);
   // })
 
-  const arr = createMap(40);
-
-  window.addEventListener('click', () => {
-    renderSwaps(arr);
-  })
+  const map = new Map
+  map.newArr();
 
 })
