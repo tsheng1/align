@@ -2,16 +2,16 @@
 
 ## Background and Overview
 
-Radian is a visualization of some of the most popular sorting algorithms. Much of the focus of this project is to not only showcase the functionality of the algorithms but also to highlight the aesthetics and appeal of data in a 2D space.
+Align is a visualization of some of the most popular sorting algorithms. Much of the focus of this project is to not only showcase the functionality of the algorithms but also to highlight the aesthetics and appeal of data in a 2D space.
 
 ## Functionality and MVP Features
 
-In Radian, users will be able to:
+In Align, users will be able to:
 
 * Choose the type of sorting algorithm they want to see
-* Choose the number of 'points', which will also determine the speed of sorting
+* Choose the number of 'bars', which will also determine the speed of sorting
 * Choose the color theme 
-* Start, pause, and restart the visualization
+* Start and restart the visualization
 
 ## Wireframe
 
@@ -44,4 +44,4 @@ This project was created with the following:
 
 ### Bonus
 
-* Additional shapes, not just a circle.
+* Additional shapes to be sorted into
