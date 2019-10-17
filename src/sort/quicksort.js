@@ -1,24 +1,40 @@
-import {render} from '../map';
-
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+function swap(arr, left, right) {
+  const temp = arr[left];
+  arr[left] = arr[right];
+  arr[right] = temp;
 }
 
-function quickSort (arr) {
-  if (arr.length < 2) return arr;
-  // await sleep(100);
-  
-  const pivot = arr[0];
-  let left = arr.slice(1).filter((el) => el < pivot);
-  let right = arr.slice(1).filter((el) => el >= pivot);
-  left = setTimeout(function() {quickSort(left)}, 100);
-  right = quickSort(function () { quickSort(right) }, 100);
+export default class QuickSortClass {
+  constructor(addToQueue) {
+    this.addToQueue = this.addToQueue.bind(this);
+  }
 
-  return left.concat([pivot]).concat(right);
+  partition(arr, left, right) {
+    let pivot = arr[Math.floor((right + left) / 2)], 
+      i = left, 
+      j = right;
+    while (i <= j) {
+      while (arr[i] < pivot) {
+        i++;
+      }
+      while (arr[j] > pivot) {
+        j--;
+      }
+      if (i <= j) {
+        swap(arr, i, j); 
+        this.addToQueue(arr, {
+          selectedIdxs:
+          {
+            [i]: true,
+            [j]: true
+          }
+        })
+        i++;
+        j--;
+      }
+    }
+    return i;
+  }
+
+
 }
-
-const quickTimeOut = arr => {
-  setTimeout(function() {quickSort(arr)}, 100);
-} 
-
-export default quickTimeOut;

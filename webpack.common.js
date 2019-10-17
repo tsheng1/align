@@ -63,6 +63,6 @@ module.exports = {
     chunkFilename: "[id].css",
     ignoreOrder: false // Enable to remove warnings about conflicting order
   }), require("autoprefixer"),
-    ["@babel/transform-runtime"]
+    // ["@babel/transform-runtime"]
    ]
 };

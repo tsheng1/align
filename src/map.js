@@ -20,15 +20,15 @@ export const createMap = numDots => {
     let num = circlesArr[i]
     let step = 2 * Math.PI / numDots;
     // let radius = 200 * (Math.abs(num - i) / (numDots / 2))
-    let absNum = Math.abs((num - i) / 5);
+    let absNum = Math.abs((num - i));
     if (Math.abs(num - i) < 1) {
       absNum = 1;
     }
-    let radius = 200 * (1 / absNum)
+    let radius = 500 * (absNum / numDots);
     // let radius = 200;
     let x = 600 + radius * Math.cos(step * i);
     let y = 400 + radius * Math.sin(step * i);
-    circleCreateArr.push({ "cx": x, "cy": y, "r": 2 })
+    circleCreateArr.push({ "cx": x, "cy": y, "r": 2, "idx": i })
   }
 
 
@@ -49,8 +49,7 @@ export const createMap = numDots => {
     .attr("r", function (d) { return d.r; })
     .style("fill", "black")
 
-
-    return (circlesArr);
+  return {circlesArr, circleCreateArr};
 };
 
 function shuffle(array) {
@@ -61,22 +60,28 @@ function shuffle(array) {
 }
 
 export const render = arr => {
+  if (arr === undefined) return null;
+
   d3.selectAll(".circle-container > *").remove();
 
-  let circleCreateArr = [];
-  for (let i = 0; i < arr.length; i++) {
-    let num = arr[i]
-    let step = 2 * Math.PI / arr.length;
-    let absNum = Math.abs((num - i) / 5);
-    if (Math.abs(num - i) < 1) {
-      absNum = 1;
-    }
-    let radius = 200 * (1 / absNum)
-    // let radius = 200;
-    let x = 600 + radius * Math.cos(step * i);
-    let y = 400 + radius * Math.sin(step * i);
-    circleCreateArr.push({ "cx": x, "cy": y, "r": 2 })
-  }
+  // let circleCreateArr = [];
+  // for (let i = 0; i < arr.length; i++) {
+  //   let num = arr[i]
+  //   let step = 2 * Math.PI / arr.length;
+  //   let absNum = Math.abs((num - i));
+  //   if (Math.abs(num - i) < 1) {
+  //     absNum = 1;
+  //   }
+  //   // let radius = 200;
+  //   let radius = 200 * (1 / absNum);
+  //   let x = 600 + radius * Math.cos(step * i);
+  //   let y = 400 + radius * Math.sin(step * i);
+  //   // let radius = 200 * (absNum/arr.length)
+  //   // // let radius = 200;
+  //   // let x = 600 + Math.sqrt(radius) * Math.cos(step * i);
+  //   // let y = 400 + Math.sqrt(radius) * Math.sin(step * i);
+  //   circleCreateArr.push({ "cx": x, "cy": y, "r": 2 })
+  // }
 
   const bigCircle = d3
     .select(".circle-container")
@@ -86,11 +91,11 @@ export const render = arr => {
     .style("fill", "transparent")
 
   let circles = bigCircle.selectAll("circle")
-    .data(circleCreateArr)
+    .data(arr)
     .enter()
     .append("circle")
     .attr("cx", function (d) { return d.cx; })
     .attr("cy", function (d) { return d.cy; })
-    .attr("r", function (d) { return d.r; })
+    .attr("r", 2)
     .style("fill", "black")
 }
