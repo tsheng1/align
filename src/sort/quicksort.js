@@ -22,13 +22,7 @@ export default class QuickSortClass {
       }
       if (i <= j) {
         swap(arr, i, j);
-        this.addToQueue(arr, {
-          selectedIdxs:
-          {
-            [i]: true,
-            [j]: true
-          }
-        })
+        this.addToQueue(arr)
         i++;
         j--;
       }

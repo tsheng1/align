@@ -19,17 +19,16 @@ export default class Map {
     }, 30)
   }
 
-  addToQueue(arr, indices = []) {
+  addToQueue(arr) {
     this.queue.push({
-      arr: arr.slice(),
-      indices
+      arr: arr.slice()
     })
   }
 
   processQueue() {
     if (this.queue[0]) {
       const swap = this.queue.shift();
-      this.render(swap.arr, swap.indices);
+      this.render(swap.arr);
     }
   }
 
@@ -40,16 +39,24 @@ export default class Map {
   newArr() {
     d3.selectAll("div > *").remove();
     this.sortingArr = []; 
+    let tempArr = [];
     for(let i = 0; i < 190; i++) {
-      this.sortingArr.push(this.randomIntFromInterval(5, 100));
+      // this.sortingArr.push(this.randomIntFromInterval(5, 400));
+      tempArr.push(i);
+      this.sortingArr = shuffleArray(tempArr);
     }
     this.render(this.sortingArr);
     this.createButton(); 
   }
 
-  render(arr, indices){
+  render(arr){
 
     d3.selectAll("svg > *").remove();
+
+    let colors = d3.scaleLinear()
+      .domain([0, 190])
+      // .range(["#ff99ff", "#1f3d7a"])
+      .range(["#00dbc2", "#c70e55"])
     
     let margin = { "top": 20, "right": 30, "bottom": 20, "left": 30 }
     let width = 500;
@@ -82,6 +89,7 @@ export default class Map {
       })
       .attr('margin', 1)
       .attr('class', 'rectangle')
+      .attr("fill", d => colors(d))
       .style({'stroke': '#ffffff', 'stroke-width': '1'})
 
   }
@@ -114,4 +122,16 @@ export default class Map {
     }
   }
 
+}
+
+
+function shuffleArray(array) {
+  for (var i = array.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+
+  return array;
 }
