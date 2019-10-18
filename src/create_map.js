@@ -152,13 +152,15 @@ export default class Map {
     fisherShuffle.className += "button";
     fisherShuffle.onclick = this.fisherShuffleFunc;
 
-    const buttonsDiv = document.getElementById("buttons")
-    buttonsDiv.append(bubbleSortButton);
-    buttonsDiv.append(quickSortButton);
-    buttonsDiv.append(mergeSortButton);
-    buttonsDiv.append(heapSortButton)
-    buttonsDiv.append(shuffleButton);
-    buttonsDiv.append(fisherShuffle);
+    const sortButtonsDiv = document.getElementById("sort-buttons")
+    sortButtonsDiv.append(bubbleSortButton);
+    sortButtonsDiv.append(quickSortButton);
+    sortButtonsDiv.append(mergeSortButton);
+    sortButtonsDiv.append(heapSortButton)
+    
+    const shuffleButtonsDiv = document.getElementById("shuffle-buttons")
+    shuffleButtonsDiv.append(shuffleButton);
+    shuffleButtonsDiv.append(fisherShuffle);
   }
 
   quickSortButtonFunc(e) {
