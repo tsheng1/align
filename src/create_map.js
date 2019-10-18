@@ -2,6 +2,7 @@ import QuickSortClass from "./sort/quicksort";
 import BubbleSortClass from "./sort/bubblesort";
 import MergeSortClass from "./sort/mergesort";
 import HeapSortClass from "./sort/heapsort";
+import CocktailSortClass from "./sort/cocktailsort";
 
 export default class Map {
   constructor() {
@@ -17,6 +18,7 @@ export default class Map {
     this.quickSortButtonFunc = this.quickSortButtonFunc.bind(this);
     this.mergeSortButtonFunc = this.mergeSortButtonFunc.bind(this);
     this.heapSortButtonFunc = this.heapSortButtonFunc.bind(this);
+    this.cocktailSortButtonFunc = this.cocktailSortButtonFunc.bind(this);
     this.fisherShuffleFunc = this.fisherShuffleFunc.bind(this);
     this.createButton = this.createButton.bind(this);
 
@@ -25,6 +27,7 @@ export default class Map {
     this.bubbleSort = new BubbleSortClass(this.addToQueue);
     this.mergeSort = new MergeSortClass(this.addToQueue);
     this.heapSort = new HeapSortClass(this.addToQueue);
+    this.cocktailSort = new CocktailSortClass(this.addToQueue);
 
 
     this.processSpeed = 20;
@@ -138,6 +141,13 @@ export default class Map {
     heapSortButton.className += "button";
     heapSortButton.onclick = (this.heapSortButtonFunc);
 
+    const cocktailSortButton = document.createElement("button");
+    cocktailSortButton.type = "button";
+    cocktailSortButton.value = "Cocktail Sort";
+    cocktailSortButton.innerHTML = "Cocktail Sort";
+    cocktailSortButton.className += "button";
+    cocktailSortButton.onclick = (this.cocktailSortButtonFunc);
+
     const shuffleButton = document.createElement("button");
     shuffleButton.type = "button";
     shuffleButton.value = "Shuffle";
@@ -156,7 +166,8 @@ export default class Map {
     sortButtonsDiv.append(bubbleSortButton);
     sortButtonsDiv.append(quickSortButton);
     sortButtonsDiv.append(mergeSortButton);
-    sortButtonsDiv.append(heapSortButton)
+    sortButtonsDiv.append(heapSortButton);
+    sortButtonsDiv.append(cocktailSortButton);
     
     const shuffleButtonsDiv = document.getElementById("shuffle-buttons")
     shuffleButtonsDiv.append(shuffleButton);
@@ -165,6 +176,7 @@ export default class Map {
 
   quickSortButtonFunc(e) {
     e.preventDefault();
+    this.processSpeed = 30;
     if (!this.queue.length) {
       this.sortingArr = this.quickSort.sort(this.sortingArr.slice());
     }
@@ -172,13 +184,23 @@ export default class Map {
 
   bubbleSortButtonFunc(e) {
     e.preventDefault();
+    this.processSpeed = .5;
     if (!this.queue.length) {
       this.sortingArr = this.bubbleSort.sort(this.sortingArr.slice());
     }
   }
 
+  cocktailSortButtonFunc(e) {
+    e.preventDefault();
+    this.processSpeed = .5;
+    if (!this.queue.length) {
+      this.sortingArr = this.cocktailSort.sort(this.sortingArr.slice());
+    }
+  }
+
   mergeSortButtonFunc(e) {
     e.preventDefault();
+    this.processSpeed = 30;
     if (!this.queue.length) {
       this.sortingArr = this.mergeSort.sort(this.sortingArr.slice());
     }
@@ -186,6 +208,7 @@ export default class Map {
 
   heapSortButtonFunc(e) {
     e.preventDefault();
+    this.processSpeed = 30;
     if (!this.queue.length) {
       this.sortingArr = this.heapSort.sort(this.sortingArr.slice());
     }
@@ -193,11 +216,7 @@ export default class Map {
 
   fisherShuffleFunc(e) {
     e.preventDefault();
-
-    if (!this.sortingArr){
-      this.newArr();
-    }
-
+    this.processSpeed = 30;
     this.sortingArr = this.fisherShuffle(this.sortingArr.slice());
   }
 
