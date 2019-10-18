@@ -6,7 +6,7 @@ function swap(arr, left, right) {
 
 export default class QuickSortClass {
   constructor(addToQueue) {
-    this.addToQueue = addToQueue
+    this.addToQueue = addToQueue;
   }
 
   partition(arr, left, right) {

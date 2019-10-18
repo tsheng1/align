@@ -1,4 +1,4 @@
-# Radian
+# Align
 
 ## Background and Overview
 
@@ -31,8 +31,8 @@ This project was created with the following:
 
 ### Day 2
 
-* Create the canvas and the randomly generated points on the map
-* Points should move based on specific sorting algorithm
+* Create the canvas and the randomly generated bars
+* Bars should move based on specific sorting algorithm
 
 ### Day 3
 

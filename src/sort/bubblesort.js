@@ -1,47 +1,24 @@
 
-import { render } from "../map";
+export default class BubbleSortClass {
+  constructor(addToQueue) {
+    this.addToQueue = addToQueue
+  }
 
-// const bubbleSort = arr => {
-//   let resultArr = arr.slice();
-//   let sorted = false;
-//   while(!sorted) {
-//     sorted = true;
-    // for (let i = 1; i < resultArr.length; i++) {
-    //   (function (i) {
-    //     setTimeout(function () {
-//           if (resultArr[i] < resultArr[i - 1]) {
-//             sorted = false;
-//             [resultArr[i], resultArr[i - 1]] = [resultArr[i - 1], resultArr[i]];
-//             render(resultArr);
-//           }
-//         }, 100 * i)
-//       })(i);
-//     }
-//   }
-//   console.log(resultArr);
-//   render(resultArr);
-// }
-
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-async function bubbleSort (arr) {
-  let resultArr = arr.slice();
-  let sorted = false;
-  while (!sorted) {
-    sorted = true;
-    for (let i = 1; i < resultArr.length; i++) {
-      await sleep(.00001);
-      if (resultArr[i] < resultArr[i - 1]) {
-        sorted = false;
-        [resultArr[i], resultArr[i - 1]] = [resultArr[i - 1], resultArr[i]];
-        render(resultArr);
+  sort(arr) {
+    let resultArr = arr.slice();
+    let sorted = false;
+    while (!sorted) {
+      sorted = true;
+      for (let i = 1; i < resultArr.length; i++) {
+        if (resultArr[i] < resultArr[i - 1]) {
+          sorted = false;
+          [resultArr[i], resultArr[i - 1]] = [resultArr[i - 1], resultArr[i]];
+          this.addToQueue(resultArr);
+        }
       }
     }
+    this.addToQueue(resultArr);
   }
-  // console.log(resultArr);
-  render(resultArr);
 }
 
 // const bubbleSort = arr => {
@@ -67,5 +44,3 @@ async function bubbleSort (arr) {
 //   console.log(resultArr);
 //   render(resultArr);
 // }
-
-export default bubbleSort;

@@ -1,5 +1,7 @@
 import QuickSortClass from "./sort/quicksort";
-
+import BubbleSortClass from "./sort/bubblesort";
+import MergeSortClass from "./sort/mergesort";
+import HeapSortClass from "./sort/heapsort";
 
 export default class Map {
   constructor() {
@@ -9,14 +11,26 @@ export default class Map {
     this.sortingArr = [];
     this.newArr = this.newArr.bind(this);
     this.randomIntFromInterval = this.randomIntFromInterval.bind(this);
+    this.fisherShuffle = this.fisherShuffle.bind(this);
+    
+    this.bubbleSortButtonFunc = this.bubbleSortButtonFunc.bind(this);
     this.quickSortButtonFunc = this.quickSortButtonFunc.bind(this);
+    this.mergeSortButtonFunc = this.mergeSortButtonFunc.bind(this);
+    this.heapSortButtonFunc = this.heapSortButtonFunc.bind(this);
+    this.fisherShuffleFunc = this.fisherShuffleFunc.bind(this);
     this.createButton = this.createButton.bind(this);
 
-    this.quickSort = new QuickSortClass(this.addToQueue);
 
+    this.quickSort = new QuickSortClass(this.addToQueue);
+    this.bubbleSort = new BubbleSortClass(this.addToQueue);
+    this.mergeSort = new MergeSortClass(this.addToQueue);
+    this.heapSort = new HeapSortClass(this.addToQueue);
+
+
+    this.processSpeed = 20;
     this.processQueueInterval = setInterval(() => {
       this.processQueue();
-    }, 30)
+    }, this.processSpeed)
   }
 
   addToQueue(arr) {
@@ -96,12 +110,33 @@ export default class Map {
 
 
   createButton() {
+    const bubbleSortButton = document.createElement("button");
+    bubbleSortButton.type = "button";
+    bubbleSortButton.value = "Bubble Sort";
+    bubbleSortButton.innerHTML = "Bubble Sort";
+    bubbleSortButton.className += "button";
+    bubbleSortButton.onclick = (this.bubbleSortButtonFunc);    
+
     const quickSortButton = document.createElement("button");
     quickSortButton.type = "button";
     quickSortButton.value = "Quick Sort";
     quickSortButton.innerHTML = "Quick Sort";
     quickSortButton.className += "button";
     quickSortButton.onclick = (this.quickSortButtonFunc);
+
+    const mergeSortButton = document.createElement("button");
+    mergeSortButton.type = "button";
+    mergeSortButton.value = "Merge Sort";
+    mergeSortButton.innerHTML = "Merge Sort";
+    mergeSortButton.className += "button";
+    mergeSortButton.onclick = (this.mergeSortButtonFunc);
+
+    const heapSortButton = document.createElement("button");
+    heapSortButton.type = "button";
+    heapSortButton.value = "Heap Sort";
+    heapSortButton.innerHTML = "Heap Sort";
+    heapSortButton.className += "button";
+    heapSortButton.onclick = (this.heapSortButtonFunc);
 
     const shuffleButton = document.createElement("button");
     shuffleButton.type = "button";
@@ -110,16 +145,75 @@ export default class Map {
     shuffleButton.className += "button";
     shuffleButton.addEventListener('click', () => {this.newArr()});
 
+    const fisherShuffle = document.createElement("button");
+    fisherShuffle.type = "button";
+    fisherShuffle.value = "Fisher-Yates Shuffle";
+    fisherShuffle.innerHTML = "Fisher-Yates Shuffle";
+    fisherShuffle.className += "button";
+    fisherShuffle.onclick = this.fisherShuffleFunc;
+
     const buttonsDiv = document.getElementById("buttons")
+    buttonsDiv.append(bubbleSortButton);
     buttonsDiv.append(quickSortButton);
+    buttonsDiv.append(mergeSortButton);
+    buttonsDiv.append(heapSortButton)
     buttonsDiv.append(shuffleButton);
+    buttonsDiv.append(fisherShuffle);
   }
 
   quickSortButtonFunc(e) {
     e.preventDefault();
     if (!this.queue.length) {
-      this.sortingArr = this.quickSort.sort(this.sortingArr.slice())
+      this.sortingArr = this.quickSort.sort(this.sortingArr.slice());
     }
+  }
+
+  bubbleSortButtonFunc(e) {
+    e.preventDefault();
+    if (!this.queue.length) {
+      this.sortingArr = this.bubbleSort.sort(this.sortingArr.slice());
+    }
+  }
+
+  mergeSortButtonFunc(e) {
+    e.preventDefault();
+    if (!this.queue.length) {
+      this.sortingArr = this.mergeSort.sort(this.sortingArr.slice());
+    }
+  }
+
+  heapSortButtonFunc(e) {
+    e.preventDefault();
+    if (!this.queue.length) {
+      this.sortingArr = this.heapSort.sort(this.sortingArr.slice());
+    }
+  }
+
+  fisherShuffleFunc(e) {
+    e.preventDefault();
+
+    if (!this.sortingArr){
+      this.newArr();
+    }
+
+    this.sortingArr = this.fisherShuffle(this.sortingArr.slice());
+  }
+
+
+  fisherShuffle(array) {
+    let len = array.length;
+
+    while (len) {
+      let i = Math.floor(Math.random() * len--)
+
+      
+      let t = array[len];
+      array[len] = array[i];
+      array[i] = t;
+      this.addToQueue(array.slice());
+    }
+
+    return array;
   }
 
 }

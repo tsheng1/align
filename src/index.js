@@ -8,17 +8,6 @@ import QuickSortClass from './sort/quicksort';
 
 window.addEventListener('DOMContentLoaded', () => {
 
-  // let circlesArr = createMap(40).circlesArr;
-  // let circleCreateArr = createMap(40).circleCreateArr;
-  
-  // window.addEventListener('click', () => {
-  //   bubbleSort(circlesArr);
-  // })
-
-  // window.addEventListener('click', () => {
-  //   quickSort(circlesArr, circlesArr, circleCreateArr);
-  // })
-
   const map = new Map
   map.newArr();
 
