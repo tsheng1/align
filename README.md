@@ -2,7 +2,7 @@
 
 ## Background and Overview
 
-Align is a visualization of some of the most popular sorting algorithms. Much of the focus of this project is to not only showcase the functionality of the algorithms but also to highlight the aesthetics and appeal of data in a 2D space.
+Align is a visualization of some of the most popular sorting algorithms. Much of the focus of this project is to not only showcase the functionality of the algorithms but also to highlight the aesthetics and appeal of data in 2D space.
 
 ## Functionality and MVP Features
 
@@ -21,7 +21,8 @@ In Align, users will be able to:
 
 This project was created with the following:
 
-* Javascript 
+* ```JavaScript```
+* ```D3.js``` for rendering 
 
 ## Implementation Timeline
 
