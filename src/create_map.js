@@ -22,13 +22,11 @@ export default class Map {
     this.fisherShuffleFunc = this.fisherShuffleFunc.bind(this);
     this.createButton = this.createButton.bind(this);
 
-
     this.quickSort = new QuickSortClass(this.addToQueue);
     this.bubbleSort = new BubbleSortClass(this.addToQueue);
     this.mergeSort = new MergeSortClass(this.addToQueue);
     this.heapSort = new HeapSortClass(this.addToQueue);
     this.cocktailSort = new CocktailSortClass(this.addToQueue);
-
 
     this.processSpeed = 20;
     this.processQueueInterval = setInterval(() => {
