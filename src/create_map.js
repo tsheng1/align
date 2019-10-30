@@ -3,6 +3,7 @@ import BubbleSortClass from "./sort/bubblesort";
 import MergeSortClass from "./sort/mergesort";
 import HeapSortClass from "./sort/heapsort";
 import CocktailSortClass from "./sort/cocktailsort";
+import RadixClass from "./sort/radix";
 
 export default class Map {
   constructor() {
@@ -18,6 +19,7 @@ export default class Map {
     this.quickSortButtonFunc = this.quickSortButtonFunc.bind(this);
     this.mergeSortButtonFunc = this.mergeSortButtonFunc.bind(this);
     this.heapSortButtonFunc = this.heapSortButtonFunc.bind(this);
+    this.radixSortButtonFunc = this.radixSortButtonFunc.bind(this);
     this.cocktailSortButtonFunc = this.cocktailSortButtonFunc.bind(this);
     this.fisherShuffleFunc = this.fisherShuffleFunc.bind(this);
     this.createButton = this.createButton.bind(this);
@@ -27,8 +29,9 @@ export default class Map {
     this.mergeSort = new MergeSortClass(this.addToQueue);
     this.heapSort = new HeapSortClass(this.addToQueue);
     this.cocktailSort = new CocktailSortClass(this.addToQueue);
+    this.radixSort = new RadixClass(this.addToQueue);
 
-    this.processSpeed = 20;
+    this.processSpeed;
     this.processQueueInterval = setInterval(() => {
       this.processQueue();
     }, this.processSpeed)
@@ -146,6 +149,13 @@ export default class Map {
     cocktailSortButton.className += "button";
     cocktailSortButton.onclick = (this.cocktailSortButtonFunc);
 
+    const radixSortButton = document.createElement("button");
+    radixSortButton.type = "button";
+    radixSortButton.value = "Radix Sort";
+    radixSortButton.innerHTML = "Radix Sort";
+    radixSortButton.className += "button";
+    radixSortButton.onclick = (this.radixSortButtonFunc);
+
     const shuffleButton = document.createElement("button");
     shuffleButton.type = "button";
     shuffleButton.value = "Shuffle";
@@ -161,11 +171,12 @@ export default class Map {
     fisherShuffle.onclick = this.fisherShuffleFunc;
 
     const sortButtonsDiv = document.getElementById("sort-buttons")
-    sortButtonsDiv.append(bubbleSortButton);
     sortButtonsDiv.append(quickSortButton);
     sortButtonsDiv.append(mergeSortButton);
+    sortButtonsDiv.append(radixSortButton);
     sortButtonsDiv.append(heapSortButton);
     sortButtonsDiv.append(cocktailSortButton);
+    sortButtonsDiv.append(bubbleSortButton);
     
     const shuffleButtonsDiv = document.getElementById("shuffle-buttons")
     shuffleButtonsDiv.append(shuffleButton);
@@ -209,6 +220,14 @@ export default class Map {
     this.processSpeed = 30;
     if (!this.queue.length) {
       this.sortingArr = this.heapSort.sort(this.sortingArr.slice());
+    }
+  }
+
+  radixSortButtonFunc(e) {
+    e.preventDefault();
+    this.processSpeed = 100;
+    if (!this.queue.length) {
+      this.sortingArr = this.radixSort.sort(this.sortingArr.slice());
     }
   }
 
