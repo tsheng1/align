@@ -6,16 +6,12 @@ Align is a visualization of some of the most popular sorting algorithms. Much of
 
 ## Functionality and MVP Features
 
-In Align, users will be able to:
+In Align, users are able to:
 
 * Choose the type of sorting algorithm they want to see
-* Choose the number of 'bars', which will also determine the speed of sorting
-* Choose the color theme 
-* Start and restart the visualization
+* Start, shuffle, and restart the visualization
 
-## Wireframe
-
-![](https://github.com/tsheng1/radian/blob/master/wireframe.png)
+![](https://github.com/tsheng1/align/blob/master/align2.png)
 
 ## Architecture and Technologies
 
