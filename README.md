@@ -18,7 +18,7 @@ In Align, users are able to:
 This project was created with the following:
 
 * ```JavaScript```
-* ```D3.js``` for rendering 
+* ```D3.js```
 
 ## Implementation Timeline
 
