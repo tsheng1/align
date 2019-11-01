@@ -1,7 +1,7 @@
 # Align
 
 ## Background and Overview
-
+  
 Align is a visualization of some of the most popular sorting algorithms. Much of the focus of this project is to not only showcase the functionality of the algorithms but also to highlight the aesthetics and appeal of data in 2D space.
 
 ## Functionality and MVP Features
