@@ -20,25 +20,36 @@ This project was created with the following:
 * ```JavaScript```
 * ```D3.js```
 
-## Implementation Timeline
+## Key Features
+### Multiple Sorting Algorithms
 
-### Day 1
+Users are able to visualize quick sort, merge sort, radix sort, heap sort, cocktail sort, and bubble sort.
 
-* Create basic skeleton and review the necessary tutorials for D3
+#### Quick Sort
 
-### Day 2
+Align uses a version of quick sort that sorts in place, which allows rendering of the data structure throughout the process.
 
-* Create the canvas and the randomly generated bars
-* Bars should move based on specific sorting algorithm
+```javascript
 
-### Day 3
+partition(arr, left, right) {
+    let pivot = arr[Math.floor((right + left) / 2)],
+      i = left,
+      j = right;
+    while (i <= j) {
+      while (arr[i] < pivot) {
+        i++;
+      }
+      while (arr[j] > pivot) {
+        j--;
+      }
+      if (i <= j) {
+        swap(arr, i, j);
+        this.addToQueue(arr)
+        i++;
+        j--;
+      }
+    }
+  return i;
+}
 
-* Create multiple settings for the data, including a slider for number of particles and dropdowns for sorting type and color theme.
-
-### Day 4
-
-* Finish touchup and styling, along with finalizing the rest of the project.
-
-### Bonus
-
-* Additional shapes to be sorted into
+```
